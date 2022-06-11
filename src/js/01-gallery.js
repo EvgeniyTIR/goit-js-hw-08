@@ -36,12 +36,14 @@ const galleryContainer = document.querySelector('.gallery');
     };
 
 
-function OnImageClick(evt) {
+function OnImageClick(evt) {  
     evt.preventDefault();
     if(evt.target.nodeName !== 'IMG'){
         return 
         
-    }else{        
+    }else{     
+    window.removeEventListener("keydown", onEscKeyPress);      
+
     const instance = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `)
@@ -59,8 +61,6 @@ function OnImageClick(evt) {
       };
     };    
   };
- 
-
 
   galleryContainer.addEventListener('click', OnImageClick); 
 
